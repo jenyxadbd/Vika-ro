@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Для Вики ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#ffb6d9,#ffcce6,#ffd6eb);
+    overflow:hidden;
+    height:100vh;
+}
+
+#start{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+button{
+    padding:25px 55px;
+    border:none;
+    border-radius:50px;
+    background:#ff4f8b;
+    color:white;
+    font-size:28px;
+    cursor:pointer;
+    transition:.3s;
+    box-shadow:0 0 25px rgba(255,0,120,.4);
+}
+
+button:hover{
+    transform:scale(1.08);
+}
+
+#content{
+    display:none;
+    position:absolute;
+    inset:0;
+    overflow-y:auto;
+    text-align:center;
+    padding:40px;
+}
+
+h1{
+    font-size:60px;
+    color:white;
+    text-shadow:2px 2px 15px hotpink;
+    animation:fade 2s;
+}
+
+p{
+    color:white;
+    font-size:26px;
+    max-width:900px;
+    margin:30px auto;
+    line-height:1.8;
+    animation:fade 2s;
+}
+
+.gallery{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:20px;
+    margin-top:40px;
+}
+
+.gallery img{
+    width:220px;
+    height:280px;
+    object-fit:cover;
+    border-radius:20px;
+    box-shadow:0 0 25px hotpink;
+    animation:float 5s ease-in-out infinite;
+}
+
+.heart{
+    font-size:110px;
+    color:red;
+    margin:50px 0;
+    animation:beat 1s infinite;
+}
+
+.flower{
+    position:absolute;
+    font-size:35px;
+    pointer-events:none;
+    animation:explode 2.5s forwards;
+}
+
+@keyframes explode{
+0%{
+transform:translate(0,0) scale(0);
+opacity:1;
+}
+100%{
+transform:translate(var(--x),var(--y)) rotate(720deg) scale(2);
+opacity:0;
+}
+}
+
+@keyframes beat{
+50%{
+transform:scale(1.2);
+}
+}
+
+@keyframes float{
+50%{
+transform:translateY(-15px);
+}
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+</style>
+</head>
+
+<body>
+
+<div id="start">
+<button onclick="love()">Полюбить Женю ❤️</button>
+</div>
+
+<div id="content">
+
+<h1>Вика ❤️</h1>
+
+<p>
+Ты невероятная девушка. Спасибо тебе за твою доброту,
+улыбку, поддержку и моменты, которые делают жизнь ярче.
+Пусть каждый день приносит тебе счастье, а улыбка никогда
+не исчезает с твоего лица.
+
+Ты заслуживаешь самого лучшего, и я очень рад,
+что ты есть в моей жизни.
+</p>
+
+<div class="gallery">
+<img src="photo1.jpg">
+<img src="photo2.jpg">
+<img src="photo3.jpg">
+<img src="photo4.jpg">
+</div>
+
+<div class="heart">❤️</div>
+
+</div>
+
+<script>
+
+function love(){
+
+document.getElementById("start").style.display="none";
+document.getElementById("content").style.display="block";
+
+for(let i=0;i<180;i++){
+
+let f=document.createElement("div");
+f.className="flower";
+
+const flowers=["🌸","🌹","🌺","🌷","💮","🌼"];
+
+f.innerHTML=flowers[Math.floor(Math.random()*flowers.length)];
+
+f.style.left="50%";
+f.style.top="50%";
+
+f.style.setProperty("--x",(Math.random()*1400-700)+"px");
+f.style.setProperty("--y",(Math.random()*1000-500)+"px");
+
+document.body.appendChild(f);
+
+setTimeout(()=>f.remove(),2500);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
